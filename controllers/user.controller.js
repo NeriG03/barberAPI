@@ -1,9 +1,38 @@
 import userService from "../services/user.service.js";
+import bcryptjs from "bcryptjs";
+import jwt from "jsonwebtoken";
+import dotenv from "dotenv";
+dotenv.config();
 
 const post = async (req, res) => {
     try {
-        const user = await userService.create(req.body);
-        res.status(201).send(user);
+        const { name, phone ,email, password } = req.body;
+        
+        if (!name || !phone || !email || !password) {
+            throw new Error("Name, phone, email and password fields are required");
+        }
+
+        const userExists = await userService.getByEmail(email);
+
+        if (userExists) {
+            throw new Error("Email already exists");
+        }
+
+        const passwordHash = bcryptjs.hashSync(password, 15);
+
+        const user = await userService.create({
+            name,
+            phone,
+            email,
+            password: passwordHash
+        });
+
+        const token = jwt.sign({id: user.id}, process.env.JWT_SECRET, {
+            expiresIn: "1h"
+        });
+
+
+        res.status(201).json({ok: true, message: "User created successfully"});
     } catch (error) {
         res.status(400).send(error.message);
     }
@@ -45,4 +74,30 @@ const remove = async (req, res) => {
     }
 }
 
-export default { post, get, getById, put, remove };
+const login = async (req, res) => {
+    try {
+        const { email, password } = req.body;
+
+        const user = await userService.getByEmail(email);
+
+        if (!user) {
+            throw new Error("Email not found");
+        }
+
+        const passwordIsValid = bcryptjs.compareSync(password, user.password);
+
+        if (!passwordIsValid) {
+            throw new Error("Invalid password");
+        }
+
+        const token = jwt.sign({id: user.id}, process.env.JWT_SECRET, {
+            expiresIn: "1h"
+        });
+
+        res.status(200).json({auth: true, message: "User authenticated"});
+    } catch (error) {
+        res.status(400).send(error.message);
+    }
+}
+
+export default { post, get, getById, put, remove, login };

@@ -21,6 +21,14 @@ class UsuarioService {
         });
     }
 
+    async getByEmail(email){
+        return Barber.findOne({
+            where: {
+                email
+            }
+        });
+    }
+
     async update(id, barber){
         return Barber.update(barber, {
             where: {
