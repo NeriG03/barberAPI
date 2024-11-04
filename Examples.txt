@@ -22,3 +22,11 @@ User
   "password": "1234abcd",
   "phone": "9511876665"
 }
+
+Cita
+{
+  "fecha": "2024-11-04",
+  "hora": "04:00 PM",
+  "BarberId": 1 ,
+  "UserId": 2 
+}

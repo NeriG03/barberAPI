@@ -1,4 +1,4 @@
-import { Barber } from "../src/models/index.models.js"
+import { Barber, Sucursal } from "../src/models/index.models.js"
 
 class UsuarioService {
     async create(barber){
@@ -8,7 +8,7 @@ class UsuarioService {
     async getAll(){
         return Barber.findAll({
             include: {
-                all: true
+                model: Sucursal
             }
         });
     }
