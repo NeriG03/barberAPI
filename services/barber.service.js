@@ -6,11 +6,19 @@ class UsuarioService {
     }
 
     async getAll(){
-        return Barber.findAll();
+        return Barber.findAll({
+            include: {
+                all: true
+            }
+        });
     }
 
     async getById(id){
-        return Barber.findByPk(id);
+        return Barber.findByPk(id,{
+            include: {
+                all: true
+            }
+        });
     }
 
     async update(id, barber){

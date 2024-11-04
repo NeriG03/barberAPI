@@ -5,10 +5,10 @@ import BarberController from '../controllers/barber.controller.js';
 const router = express.Router();
 
 router
-    .get('/barbers', BarberController.get)
-    .get('/barbers/:id', BarberController.getById)
-    .post('/barbers', BarberController.post)
-    .put('/barbers/:id', BarberController.put)
-    .delete('/barbers/:id', BarberController.remove);
+    .get('/barber', BarberController.get)
+    .get('/barber/:id', BarberController.getById)
+    .post('/barber', BarberController.post)
+    .put('/barber/:id', BarberController.put)
+    .delete('/barber/:id', BarberController.remove);
 
 export default router;

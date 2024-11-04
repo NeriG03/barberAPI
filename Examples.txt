@@ -1,0 +1,16 @@
+BARBER
+{
+  "name": "Leo",
+  "lastname": "Hernandez",
+  "phone": "9511876666",
+  "email": "leo@gmail.com",
+  "password": "1234",
+  "sucursalId": 1
+}
+
+Sucursal
+{
+    "name": "Sucursal Xoxocotlan",
+    "address": "C. Flores Magon #300",
+    "phone": "9511877661"
+}
