@@ -16,14 +16,7 @@ const sequelize = new Sequelize(
     dialect: 'postgres'
 })
 
-sequelize.sync({force: true})
-.then(() => {
-    console.log('Tablas sincronizadas')
-})
-.catch((error) => {
-    console.log('Error al sincronizar tablas', error)
-})
-
+sequelize.sync()
 setUpModels(sequelize)
 
 export {
