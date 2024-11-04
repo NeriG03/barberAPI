@@ -14,3 +14,11 @@ Sucursal
     "address": "C. Flores Magon #300",
     "phone": "9511877661"
 }
+
+User
+{
+  "name": "Cliente 1",
+  "email": "cliente1@gmail.com",
+  "password": "1234abcd",
+  "phone": "9511876665"
+}

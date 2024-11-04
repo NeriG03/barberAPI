@@ -2,10 +2,12 @@ import { Sequelize } from "sequelize"
 import config from '../config/config.js'
 import { Barber, BarberSchema } from "./barber.model.js"
 import { Sucursal, SucursalSchema } from "./sucursal.model.js"
+import { User, UserSchema } from "./user.model.js"
 
 function setUpModels(sequelize){
     Barber.init(BarberSchema, Barber.config(sequelize))
     Sucursal.init(SucursalSchema, Sucursal.config(sequelize))
+    User.init(UserSchema, User.config(sequelize))
 
 
 
@@ -29,5 +31,6 @@ setUpModels(sequelize)
 export {
     setUpModels,
     Barber,
-    Sucursal
+    Sucursal,
+    User
 }
