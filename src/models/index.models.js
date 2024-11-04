@@ -1,7 +1,9 @@
 import { Sequelize } from "sequelize"
 import config from '../config/config.js'
+import { Barber, BarberSchema } from "./barber.model.js"
 
 function setUpModels(sequelize){
+    Barber.init(BarberSchema, Barber.config(sequelize))
 
 }
 
@@ -25,5 +27,6 @@ sequelize.sync({force: true})
 setUpModels(sequelize)
 
 export {
-    setUpModels
+    setUpModels,
+    Barber
 }
