@@ -8,7 +8,7 @@ dotenv.config();
 const post = async (req, res) => {
     try {
         const { name, lastname, phone ,email, password } = req.body;
-        
+
         if (!name || !lastname || !phone || !email || !password) {
             throw new Error("Name, lastname, phone, email and password fields are required");
         }
@@ -34,7 +34,11 @@ const post = async (req, res) => {
         });
 
 
-        res.status(201).json({ok: true, message: "Barber created successfully"});
+        res.status(201).json({ok: true, message: "Barber created successfully"}).cookie("token", token, {
+            httpOnly: true,
+            expires: new Date(Date.now() + 3600000),
+            path: "/login"
+        });
     } catch (error) {
         res.status(400).json({error: error.message});
     }
@@ -101,8 +105,13 @@ const login = async (req, res) => {
             expiresIn: "1h"
         });
 
-        res.status(200).json({ok: true, message: "Login successful"});
-    } catch (error) {
+        res.status(200).json({ok: true, message: "Login successful"}).cookie("token", token, {
+            httpOnly: true,
+            expires: new Date(Date.now() + 3600000),
+            path: "/"
+        });
+
+    }catch (error) {
         res.status(400).json({error: error.message});
     }
 }
