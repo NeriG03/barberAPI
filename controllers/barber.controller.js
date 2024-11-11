@@ -7,9 +7,9 @@ dotenv.config();
 
 const post = async (req, res) => {
     try {
-        const { name, lastname, phone ,email, password } = req.body;
+        const { name, lastname, phone ,email, password, sucursalId} = req.body;
 
-        if (!name || !lastname || !phone || !email || !password) {
+        if (!name || !lastname || !phone || !email || !password || !sucursalId) {
             throw new Error("Name, lastname, phone, email and password fields are required");
         }
 
@@ -26,19 +26,20 @@ const post = async (req, res) => {
             lastname,
             phone,
             email,
-            password: passwordHash
+            password: passwordHash,
+            sucursalId
         });
 
         const token = jwt.sign({id: barber.id}, process.env.JWT_SECRET, {
             expiresIn: "1h"
         });
 
-
-        res.status(201).json({ok: true, message: "Barber created successfully"}).cookie("token", token, {
+        res.cookie("token", token, {
             httpOnly: true,
             expires: new Date(Date.now() + 3600000),
             path: "/login"
         });
+        res.status(201).json({ok: true, message: "Barber created successfully"})
     } catch (error) {
         res.status(400).json({error: error.message});
     }
@@ -105,11 +106,13 @@ const login = async (req, res) => {
             expiresIn: "1h"
         });
 
-        res.status(200).json({ok: true, message: "Login successful"}).cookie("token", token, {
+
+        res.cookie("token", token, {
             httpOnly: true,
             expires: new Date(Date.now() + 3600000),
-            path: "/"
+            path: "/cita"
         });
+        res.status(200).json({ok: true, message: "Login successful"})
 
     }catch (error) {
         res.status(400).json({error: error.message});

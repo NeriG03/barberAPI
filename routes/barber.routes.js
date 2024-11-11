@@ -11,6 +11,6 @@ router
     .post('/barber', BarberController.post)
     .put('/barber/:id', BarberController.put)
     .delete('/barber/:id', BarberController.remove)
-    .post('/barber/login', BarberController.login);
+    .post('/barberLogin', BarberController.login);
 
 export default router;

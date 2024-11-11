@@ -16,7 +16,7 @@ class UsuarioService {
     async getById(id){
         return Barber.findByPk(id,{
             include: {
-                all: true
+                model: Sucursal
             }
         });
     }
