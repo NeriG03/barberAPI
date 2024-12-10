@@ -50,6 +50,33 @@ class CitaService {
         })
     }
 
+    async getCitasByBarberAndDate(barberId){
+        const today = new Date();
+        const start = new Date(today.setHours(0, 0, 0, 0));
+        const end = new Date(today.setHours(23, 59, 59, 999));
+        return await Cita.findAll({
+            where: {
+                barberId,
+                fecha: {
+                    [Op.between]: [start, end]
+                }
+            },
+            include:
+            [
+                {
+                    model: User
+                },
+                {
+                    model: Barber,
+                    include:
+                    {
+                        model: Sucursal
+                    }
+                }
+            ]
+        })
+    }
+
     async getById(id){
         return await Cita.findByPk(id,
             {

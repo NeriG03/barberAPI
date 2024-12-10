@@ -21,6 +21,15 @@ const getByDate = async (req, res) => {
     }
 }
 
+const getByBarberAndDate = async (req, res) => {
+    try {
+        const citas = await CitaService.getCitasByBarberAndDate(req.params.barberId);
+        res.status(200).json(citas);
+    } catch (error) {
+        res.status(400).json({message: error.message})
+    }
+}
+
 const get = async (req, res) => {
     try {
         const citas = await CitaService.getAll();
