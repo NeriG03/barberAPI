@@ -72,5 +72,6 @@ export default {
     getById,
     put,
     remove,
-    getByDate
+    getByDate,
+    getByBarberAndDate
 }
