@@ -12,6 +12,6 @@ router
     .get('/citaDate', citaController.getByDate)
     .get('/citaBarber/:barberId', citaController.getByBarberAndDate)
     .get('/cita/horas/:barberId/:date', citaController.getHorasDisponibles)
-    .get('/citaUser/:userId', citaController.getByUserAndDate);
+    .get('Id/citaUser/:user', citaController.getByUserAndDate);
 
 export default router;

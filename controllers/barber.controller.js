@@ -45,8 +45,7 @@ const post = async (req, res) => {
 
         res.cookie("token", token, {
             httpOnly: true,
-            expires: new Date(Date.now() + 3600000),
-            path: "/login"
+            expires: new Date(Date.now() + 3600000)
         });
         res.status(201).json({ok: true, message: "Barber created successfully", token, barber: lBarber});
     } catch (error) {
@@ -135,8 +134,7 @@ const login = async (req, res) => {
 
         res.cookie("token", token, {
             httpOnly: true,
-            expires: new Date(Date.now() + 3600000),
-            path: "/cita"
+            expires: new Date(Date.now() + 3600000)
         });
         res.status(200).json({ok: true, message: "Login successful", token, barber: lBarber});
 

@@ -40,8 +40,7 @@ const post = async (req, res) => {
 
         res.cookie("token", token, {
             httpOnly: true,
-            expires: new Date(Date.now() + 3600000),
-            path: "/login"
+            expires: new Date(Date.now() + 3600000)
         });
 
 
@@ -117,6 +116,11 @@ const login = async (req, res) => {
         const token = jwt.sign({id: user.id}, process.env.JWT_SECRET, {
             expiresIn: "1h"
         });
+
+        res.cookie("token", token, {
+            httpOnly: true,
+            expires: new Date(Date.now() + 3600000)});
+            
 
         res.status(200).json({auth: true, message: "User authenticated", token, user: lUser});
     } catch (error) {

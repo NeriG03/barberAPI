@@ -94,16 +94,14 @@ class CitaService {
         return horas.filter(hora => !horasOcupadas.includes(hora));
     }
 
-    async getCitasByUserAndDate(userId){
+    async getCitasByUserAndDate(UserId){
         const today = new Date();
-        const start = new Date(today.setHours(0, 0, 0, 0));
-        const end = new Date(today.setHours(23, 59, 59, 999));
+        //const start = new Date(today.setHours(0, 0, 0, 0));
+        //const end = new Date(today.setHours(23, 59, 59, 999));
         return await Cita.findAll({
             where: {
-                userId,
-                fecha: {
-                    [Op.between]: [start, end]
-                }
+                UserId
+                
             },
             include:
             [

@@ -9,6 +9,16 @@ BARBER
   "image": "https://imgs.search.brave.com/gQ4i8Xy93zI__wKMqtem-GxHk8-jHC31rhL74IQ4fwg/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvMTM2/NTYwODAyMy9lcy9m/b3RvL2ZvdG8tZGUt/dW4tYXB1ZXN0by1q/b3Zlbi1iYXJiZXJv/LXBhcmFkby1zb2xv/LWVuLXN1LXNhbCVD/MyVCM24uanBnP3M9/NjEyeDYxMiZ3PTAm/az0yMCZjPU5EemFP/bmM0SE56dmcySU9Y/dWJmTjVKOVMwVGFY/cnhZOHFPelZnZzVR/V3c9"
 }
 
+{
+  "name": "Neri",
+  "lastname": "Sosa",
+  "phone": "9511876665",
+  "email": "neri@gmail.com",
+  "password": "1234",
+  "sucursalId": 1,
+  "image": "https://imgs.search.brave.com/NeMqZgHUfbXHtCtu6HTWtZDqp8q5agk-PhrUXBC4SpY/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvMTMy/MTEzMTI5MC9pdC9m/b3RvL290dGVuZXJl/LXVuLXRhZ2xpby1k/aS1jYXBlbGxpLWVs/ZWdhbnRlLmpwZz9z/PTYxMng2MTImdz0w/Jms9MjAmYz0yMVFo/WlFGSmtCaV9jWUt3/eGZIUXhQQjNoR3R4/Skl6SkdrVE1pNjZW/S0tNPQ"
+}
+
 Sucursal
 {
     "name": "Sucursal Xoxocotlan",
