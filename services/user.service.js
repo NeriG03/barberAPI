@@ -39,6 +39,14 @@ class UserService {
         });
     }
 
+    async getByPhone(phone) {
+        return await User.findOne({
+            where: {
+                phone
+            }
+        });
+    }
+
 }
 
 export default new UserService();

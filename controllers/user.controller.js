@@ -89,12 +89,16 @@ const remove = async (req, res) => {
 
 const login = async (req, res) => {
     try {
-        const { email, password } = req.body;
+        const { email, phone, password } = req.body;
 
-        const user = await userService.getByEmail(email);
+        if (!email && !phone) {
+            throw new Error("Email or phone number is required");
+        }
+
+        const user = email ? await userService.getByEmail(email) : await userService.getByPhone(phone);
 
         if (!user) {
-            throw new Error("Email not found");
+            throw new Error("User not found");
         }
 
         const passwordIsValid = bcryptjs.compareSync(password, user.password);

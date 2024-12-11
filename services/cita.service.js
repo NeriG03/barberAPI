@@ -77,6 +77,50 @@ class CitaService {
         })
     }
 
+    async getHorasDisponiblesByBarberAndDate(barberId, date){
+        const start = new Date(date.setHours(0, 0, 0, 0));
+        const end = new Date(date.setHours(23, 59, 59, 999));
+        const citas = await Cita.findAll({
+            where: {
+                barberId,
+                fecha: {
+                    [Op.between]: [start, end]
+                }
+            }
+        })
+        const horas = ['9:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00'];
+        const horasOcupadas = citas.map(cita => cita.hora);
+        return horas.filter(hora => !horasOcupadas.includes(hora));
+    }
+
+    async getCitasByUserAndDate(userId){
+        const today = new Date();
+        const start = new Date(today.setHours(0, 0, 0, 0));
+        const end = new Date(today.setHours(23, 59, 59, 999));
+        return await Cita.findAll({
+            where: {
+                userId,
+                fecha: {
+                    [Op.between]: [start, end]
+                }
+            },
+            include:
+            [
+                {
+                    model: User
+                },
+                {
+                    model: Barber,
+                    include:
+                    {
+                        model: Sucursal
+                    }
+                }
+            ]
+        })
+    }
+
+
     async getById(id){
         return await Cita.findByPk(id,
             {

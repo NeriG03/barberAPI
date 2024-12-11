@@ -30,6 +30,24 @@ const getByBarberAndDate = async (req, res) => {
     }
 }
 
+const getByUserAndDate = async (req, res) => {
+    try {
+        const citas = await CitaService.getCitasByUserAndDate(req.params.userId);
+        res.status(200).json(citas);
+    } catch (error) {
+        res.status(400).json({message: error.message})
+    }
+}
+
+const getHorasDisponibles = async (req, res) => {
+    try {
+        const horas = await CitaService.getHorasDisponiblesByBarberAndDate(req.params.barberId, req.params.date);
+        res.status(200).json(horas);
+    } catch (error) {
+        res.status(400).json({message: error.message})
+    }
+}
+
 const get = async (req, res) => {
     try {
         const citas = await CitaService.getAll();
@@ -73,5 +91,7 @@ export default {
     put,
     remove,
     getByDate,
-    getByBarberAndDate
+    getByBarberAndDate,
+    getByUserAndDate,
+    getHorasDisponibles
 }
