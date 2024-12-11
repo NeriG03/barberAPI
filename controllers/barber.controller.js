@@ -7,9 +7,9 @@ dotenv.config();
 
 const post = async (req, res) => {
     try {
-        const { name, lastname, phone ,email, password, sucursalId} = req.body;
+        const { name, lastname, phone ,email, password, sucursalId, image} = req.body;
 
-        if (!name || !lastname || !phone || !email || !password || !sucursalId) {
+        if (!name || !lastname || !phone || !email || !password || !sucursalId || !image) {
             throw new Error("Name, lastname, phone, email and password fields are required");
         }
 
@@ -27,6 +27,7 @@ const post = async (req, res) => {
             phone,
             email,
             password: passwordHash,
+            image,
             sucursalId
         });
 
@@ -129,7 +130,8 @@ const login = async (req, res) => {
             lastname: barber.lastname,
             phone: barber.phone,
             email: barber.email,
-            isAdmin: barber.isAdmin
+            isAdmin: barber.isAdmin,
+            image: barber.image
         }
 
         res.cookie("token", token, {

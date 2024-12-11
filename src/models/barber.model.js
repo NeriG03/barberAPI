@@ -48,7 +48,7 @@ const BarberSchema = {
     },
     image: {
         type: DataTypes.STRING(400),
-        allowNull: true
+        allowNull: false
     }
 }
 

@@ -17,11 +17,12 @@ function setUpModels(sequelize){
     Sucursal.hasMany(Barber, {foreignKey: 'sucursalId'});
     Barber.belongsTo(Sucursal, {foreignKey: 'sucursalId'});
 
-    Barber.belongsToMany(User, {through: Cita});
-    User.belongsToMany(Barber, {through: Cita});
-
-    Cita.belongsTo(User);
-    Cita.belongsTo(Barber);
+        // Updated associations
+        Barber.hasMany(Cita, { foreignKey: 'BarberId' });
+        Cita.belongsTo(Barber, { foreignKey: 'BarberId' });
+    
+        User.hasMany(Cita, { foreignKey: 'UserId' });
+        Cita.belongsTo(User, { foreignKey: 'UserId' });
 
 
 }

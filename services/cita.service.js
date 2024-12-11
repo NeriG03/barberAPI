@@ -4,9 +4,12 @@ import { Op } from 'sequelize';
 class CitaService {
     constructor(){}
 
-
-    async create (data){
-        return await Cita.create(data)
+    async create(data) {
+        try {
+            return await Cita.create(data);
+        } catch (error) {
+            throw new Error(error.message);
+        }
     }
 
     async getAll(){
@@ -50,16 +53,13 @@ class CitaService {
         })
     }
 
-    async getCitasByBarberAndDate(barberId){
+    async getCitasByBarberAndDate(BarberId){
         const today = new Date();
         const start = new Date(today.setHours(0, 0, 0, 0));
         const end = new Date(today.setHours(23, 59, 59, 999));
         return await Cita.findAll({
             where: {
-                barberId,
-                fecha: {
-                    [Op.between]: [start, end]
-                }
+                BarberId
             },
             include:
             [
@@ -78,7 +78,7 @@ class CitaService {
     }
 
     async getHorasDisponiblesByBarberAndDate(BarberId, date){
-        const dateObj = new Date(date); // Convert to Date object
+        const dateObj = new Date(date); 
         const start = new Date(dateObj.setHours(0, 0, 0, 0));
         const end = new Date(dateObj.setHours(23, 59, 59, 999));
         const citas = await Cita.findAll({
@@ -89,7 +89,7 @@ class CitaService {
                 }
             }
         })
-        const horas = ['9:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00'];
+        const horas = ['09:00:00', '10:00:00', '11:00:00', '12:00:00', '13:00:00', '14:00:00', '15:00:00', '16:00:00', '17:00:00', '18:00:00'];
         const horasOcupadas = citas.map(cita => cita.hora);
         return horas.filter(hora => !horasOcupadas.includes(hora));
     }
@@ -101,7 +101,6 @@ class CitaService {
         return await Cita.findAll({
             where: {
                 UserId
-                
             },
             include:
             [
