@@ -37,6 +37,14 @@ class UsuarioService {
         });
     }
 
+    async getBySucursal(sucursalId){
+        return Barber.findAll({
+            where: {
+                sucursalId
+            }
+        });
+    }
+
     async update(id, barber){
         return Barber.update(barber, {
             where: {

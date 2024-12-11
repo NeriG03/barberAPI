@@ -77,12 +77,13 @@ class CitaService {
         })
     }
 
-    async getHorasDisponiblesByBarberAndDate(barberId, date){
-        const start = new Date(date.setHours(0, 0, 0, 0));
-        const end = new Date(date.setHours(23, 59, 59, 999));
+    async getHorasDisponiblesByBarberAndDate(BarberId, date){
+        const dateObj = new Date(date); // Convert to Date object
+        const start = new Date(dateObj.setHours(0, 0, 0, 0));
+        const end = new Date(dateObj.setHours(23, 59, 59, 999));
         const citas = await Cita.findAll({
             where: {
-                barberId,
+                BarberId,
                 fecha: {
                     [Op.between]: [start, end]
                 }

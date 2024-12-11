@@ -26,6 +26,10 @@ const CitaSchema = {
     hora: {
         type: DataTypes.TIME,
         allowNull: false
+    },
+    servicio: {
+        type: DataTypes.STRING,
+        allowNull: false
     }
 };
 

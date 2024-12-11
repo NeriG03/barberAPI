@@ -5,7 +5,8 @@ BARBER
   "phone": "9511876666",
   "email": "leo@gmail.com",
   "password": "1234",
-  "sucursalId": 1
+  "sucursalId": 1,
+  "image": "https://imgs.search.brave.com/gQ4i8Xy93zI__wKMqtem-GxHk8-jHC31rhL74IQ4fwg/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvMTM2/NTYwODAyMy9lcy9m/b3RvL2ZvdG8tZGUt/dW4tYXB1ZXN0by1q/b3Zlbi1iYXJiZXJv/LXBhcmFkby1zb2xv/LWVuLXN1LXNhbCVD/MyVCM24uanBnP3M9/NjEyeDYxMiZ3PTAm/az0yMCZjPU5EemFP/bmM0SE56dmcySU9Y/dWJmTjVKOVMwVGFY/cnhZOHFPelZnZzVR/V3c9"
 }
 
 Sucursal
@@ -28,7 +29,8 @@ Cita
   "fecha": "2024-11-04",
   "hora": "04:00 PM",
   "BarberId": 1 ,
-  "UserId": 2 
+  "UserId": 2,
+  "servicio": "Corte Degradado"
 }
 
 Login

@@ -10,6 +10,8 @@ router
     .put('/cita/:id', citaController.put)
     .delete('/cita/:id', citaController.remove)
     .get('/citaDate', citaController.getByDate)
-    .get('/citaBarber/:barberId', citaController.getByBarberAndDate);
+    .get('/citaBarber/:barberId', citaController.getByBarberAndDate)
+    .get('/cita/horas/:barberId/:date', citaController.getHorasDisponibles)
+    .get('/citaUser/:userId', citaController.getByUserAndDate);
 
 export default router;

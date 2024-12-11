@@ -82,6 +82,15 @@ const put = async (req, res) => {
     }
 }
 
+const getBarberBySucursal = async (req, res) => {
+    try {
+        const response = await BarberService.getBySucursal(req.params.sucursal);
+        res.status(200).json(response);
+    } catch (error) {
+        res.status(400).json({error: error.message});
+    }
+}
+
 const remove = async (req, res) => {
     try {
         const response = await BarberService.delete(req.params.id);
@@ -136,4 +145,4 @@ const login = async (req, res) => {
     }
 }
 
-export default { post, get, getById, put, remove, login };
+export default { post, get, getById, put, remove, login, getBarberBySucursal };

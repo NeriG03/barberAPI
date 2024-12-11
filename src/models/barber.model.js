@@ -45,6 +45,10 @@ const BarberSchema = {
         type: DataTypes.BOOLEAN,
         allowNull: false,
         defaultValue: false
+    },
+    image: {
+        type: DataTypes.STRING(400),
+        allowNull: true
     }
 }
 

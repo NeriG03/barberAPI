@@ -11,6 +11,7 @@ router
     .post('/barber', BarberController.post)
     .put('/barber/:id', BarberController.put)
     .delete('/barber/:id', BarberController.remove)
-    .post('/barberLogin', BarberController.login);
+    .post('/barberLogin', BarberController.login)
+    .get('/barber/sucursal/:sucursal', BarberController.getBarberBySucursal);
 
 export default router;
