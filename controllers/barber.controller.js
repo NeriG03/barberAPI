@@ -106,13 +106,22 @@ const login = async (req, res) => {
             expiresIn: "1h"
         });
 
+        const lBarber = {
+            id: barber.id,
+            name: barber.name,
+            lastname: barber.lastname,
+            phone: barber.phone,
+            email: barber.email,
+            isAdmin: barber.isAdmin
+        }
+
 
         res.cookie("token", token, {
             httpOnly: true,
             expires: new Date(Date.now() + 3600000),
             path: "/cita"
         });
-        res.status(200).json({ok: true, message: "Login successful"})
+        res.status(200).json({ok: true, message: "Login successful", token, barber: lBarber});
 
     }catch (error) {
         res.status(400).json({error: error.message});
