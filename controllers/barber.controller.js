@@ -93,16 +93,16 @@ const remove = async (req, res) => {
 
 const login = async (req, res) => {
     try {
-        const { email, password } = req.body;
+        const { email, phone, password } = req.body;
 
-        if (!email || !password) {
-            throw new Error("Email and password fields are required");
+        if (!email && !phone) {
+            throw new Error("Email or phone number is required");
         }
 
-        const barber = await BarberService.getByEmail(email);
+        const barber = email ? await BarberService.getByEmail(email) : await BarberService.getByPhone(phone);
 
         if (!barber) {
-            throw new Error("Email not found");
+            throw new Error("Barber not found");
         }
 
         const passwordMatches = bcryptjs.compareSync(password, barber.password);
@@ -124,7 +124,6 @@ const login = async (req, res) => {
             isAdmin: barber.isAdmin
         }
 
-
         res.cookie("token", token, {
             httpOnly: true,
             expires: new Date(Date.now() + 3600000),
@@ -132,7 +131,7 @@ const login = async (req, res) => {
         });
         res.status(200).json({ok: true, message: "Login successful", token, barber: lBarber});
 
-    }catch (error) {
+    } catch (error) {
         res.status(400).json({error: error.message});
     }
 }

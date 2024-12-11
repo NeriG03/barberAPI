@@ -29,6 +29,14 @@ class UsuarioService {
         });
     }
 
+    async getByPhone(phone){
+        return Barber.findOne({
+            where: {
+                phone
+            }
+        });
+    }
+
     async update(id, barber){
         return Barber.update(barber, {
             where: {
