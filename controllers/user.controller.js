@@ -31,8 +31,21 @@ const post = async (req, res) => {
             expiresIn: "1h"
         });
 
+        const lUser = {
+            id: user.id,
+            name: user.name,
+            phone: user.phone,
+            email: user.email
+        }
 
-        res.status(201).json({ok: true, message: "User created successfully"});
+        res.cookie("token", token, {
+            httpOnly: true,
+            expires: new Date(Date.now() + 3600000),
+            path: "/login"
+        });
+
+
+        res.status(201).json({ok: true, message: "User created successfully", token, user: lUser});
     } catch (error) {
         res.status(400).send(error.message);
     }
@@ -90,11 +103,18 @@ const login = async (req, res) => {
             throw new Error("Invalid password");
         }
 
+        const lUser = {
+            id: user.id,
+            name: user.name,
+            phone: user.phone,
+            email: user.email
+        }
+
         const token = jwt.sign({id: user.id}, process.env.JWT_SECRET, {
             expiresIn: "1h"
         });
 
-        res.status(200).json({auth: true, message: "User authenticated"});
+        res.status(200).json({auth: true, message: "User authenticated", token, user: lUser});
     } catch (error) {
         res.status(400).send(error.message);
     }
