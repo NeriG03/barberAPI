@@ -8,13 +8,6 @@
       <jdbc-url>jdbc:postgresql://localhost:5432/postgres</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
-    <data-source source="LOCAL" name="BarberShop" uuid="fbc04d6e-635f-47d3-af82-6ee7a1b81b8d">
-      <driver-ref>postgresql</driver-ref>
-      <synchronize>true</synchronize>
-      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
-      <jdbc-url>jdbc:postgresql://localhost:5432/barbershop</jdbc-url>
-      <working-dir>$ProjectFileDir$</working-dir>
-    </data-source>
     <data-source source="LOCAL" name="DBdentista" uuid="58e9c9aa-845b-41f2-854c-1139ef6ea681">
       <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
@@ -29,18 +22,18 @@
       <jdbc-url>jdbc:postgresql://localhost:5432/bibliotecaapi</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
-    <data-source source="LOCAL" name="nodeLuis" uuid="c3e4f6d2-0c42-45ca-b9cb-fb9d3d7f7ec7">
-      <driver-ref>postgresql</driver-ref>
-      <synchronize>true</synchronize>
-      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
-      <jdbc-url>jdbc:postgresql://localhost:5432/node</jdbc-url>
-      <working-dir>$ProjectFileDir$</working-dir>
-    </data-source>
     <data-source source="LOCAL" name="rentaCasas" uuid="d1b0ef01-a157-4108-864a-c680fb980c96">
       <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
       <jdbc-url>jdbc:postgresql://localhost:5432/rentacasas</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
+    <data-source source="LOCAL" name="barber" uuid="3a2ed783-8982-419b-bc02-c15736473b78">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://localhost:5432/barberla</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
   </component>
